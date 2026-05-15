@@ -1,92 +1,56 @@
-# Business Requirements - ksf_TravelExpense
+# Business Requirements - ksf_TravelExpense_UI
 
-## Project Overview
-Travel and expense tracking - supplier management, trip scheduling, expense reports.
+## Document Information
+- **Module**: ksf_TravelExpense_UI
+- **Version**: 1.0.0
+- **Date**: 2026-05-11
+- **Status**: Implemented
+- **Author**: KSFII Development Team
 
-## Problem Statement
-- Need preferred suppliers list
-- Need expense entry and approval
-- Need trip management as mini-project
-- Need per-diems and expense codes through GL
+---
 
-## Supplier Management
+## 1. Project Overview
 
-### Suppliers (NOT stock_master - separate)
-- Supplier name
-- Service type: Hotel, Car Rental, Taxi, Transit, Meal, Other
-- Contact, website, rate code
-- Preference order (1st, 2nd, 3rd)
-- Corporate rate available (yes/no)
+ksf_TravelExpense_UI is the WordPress ESS adapter for ksf_TravelExpense, providing the user interface for TravelExpense functionality.
 
-### Examples
-| Supplier | Type | Preference |
-|----------|------|-------------|
-| Enterprise Rent-A-Car | Car Rental | 1 |
-| Hertz | Car Rental | 2 |
-| Turo | Car Rental | 3 |
-| Marriott | Hotel | 1 |
-| Hilton | Hotel | 2 |
+---
 
-## Trip Management
+## 2. Adapter Pattern
 
-### Trip as Mini-Project
-- Employee assigned
-- Schedule calendar events (meetings)
-- Pre-approval tasks
-- Expense tasks
 
-### Trip States
-- Planned → Approved → In Progress → Complete
-- Rejected / Cancelled
 
-## Expense Entry
+---
 
-### Expense Line
-- Date
-- Category (Meal, Hotel, Car, Transit, Taxi, Other)
-- Amount
-- Project/task (billable to)
-- GL expense code
-- Receipt upload
-- Notes
+## 3. Stakeholders
 
-### Categories with GL Codes
-| Category | Default GL Code |
-|-----------|-----------------|
-| Meals - Breakfast | MEAL-BREAKFAST |
-| Meals - Lunch | MEAL-LUNCH |
-| Meals - Dinner | MEAL-DINNER |
-| Hotel | HOTEL |
-| Car Rental | CAR_RENTAL |
-| Taxi/Uber | TAXI |
-| Transit/Bus/Rail | TRANSIT |
-| Per Diem | PER_DIEM |
+- Employees (end users)
+- HR Admin (management)
+- Managers (oversight)
 
-### Per Diem Rules
-- Daily allowance by city/country
-- First/last day rules (%)
-- Excess return to employer
+---
 
-## Workflow
+## 4. Scope
 
-### Employee Flow
-1. Create trip request with dates
-2. Manager pre-approves (task)
-3. Employee travels
-4. Creates expense entries (linked to trip)
-5. Submits expense report
-6. Manager approves
-7. Finance verifies
-8. Reimbursement or GL allocation
+### UI Components
 
-### Manager Flow
-1. Receive approval task
-2. Review trip schedule
-3. Accept/reject
-4. Later: Approve expense report
+Refer to Architecture.md for component details.
 
-## Integration
-- ksf_ProjectManagement: Trip as project with tasks
-- ksf_Timesheets: Time during trip billable
-- ksf_HRM: Employee linked to trip
-- ksf_FA: GL entries for expenses
+---
+
+## 5. Integration
+
+### Consumed From
+| Module | Data |
+|--------|------|
+| ksf_TravelExpense | Business logic |
+| ksf_HRM | Employee data |
+
+### Provided To
+| Module | Data |
+|--------|------|
+| WordPress | ESS page templates |
+
+---
+
+*Document Version: 1.0.0*
+*Last Updated: 2026-05-11*
